@@ -13,9 +13,9 @@ class Rocket(pygame.sprite.Sprite):
         self._layer = Layer.PLAYER
 
         self.images = [
-            assets.get_sprite("rocket-straight"), #upflap
-            assets.get_sprite("rocket-up"), #midflap
-            assets.get_sprite("rocket-down") #downflap
+            assets.get_sprite("rocket-straight"), #rocket when no input
+            assets.get_sprite("rocket-up"), #rocket image when going up
+            assets.get_sprite("rocket-down") #rocket image when going down
         ]
 
 
@@ -42,16 +42,9 @@ class Rocket(pygame.sprite.Sprite):
             self.image = self.images[2]
         else: self.image = self.images[0]
 
-
-        # self.images.insert(0, self.images.pop())
-        # self.image = self.images[0]
-
-        # self.flap += configs.GRAVITY
-        # self.rect.y += self.flap
-
         if self.rect.x < 50:
             self.rect.x += self.horizontal_speed
-            # self.rect.x += 3
+           
 
 
     def update_movement(self, moving_up, moving_down):
@@ -63,7 +56,7 @@ class Rocket(pygame.sprite.Sprite):
             self.rect.x += self.horizontal_speed
 
     def move_up(self):
-        # Prevent the bird from moving above the top of the screen
+        # Prevent the rocket from moving above the top of the screen
         new_y_position = self.rect.y - self.vertical_speed
         if new_y_position < 0:
             self.rect.y = 0
@@ -72,23 +65,23 @@ class Rocket(pygame.sprite.Sprite):
 
 
 
-        #self.rect.y -= self.vertical_speed
+       
 
     def move_down(self):
-        # Prevent the bird from moving below the bottom of the screen
+        # Prevent the rocket from moving below the bottom of the screen
         new_y_position = self.rect.y + self.vertical_speed
         if new_y_position > configs.SCREEN_HEIGHT - self.rect.height:
             self.rect.y = configs.SCREEN_HEIGHT - self.rect.height
         else:
             self.rect.y = new_y_position
-        #self.rect.y += self.vertical_speed
+        
 
     def stay_still_y(self):
-        # No vertical movement, bird stays still in y direction
+        # No vertical movement, rocket stays still in y direction
         pass
 
     def move_forward_x(self):
-        # Continuously move the bird in x direction
+        # Continuously move the rocket in x direction
         self.rect.x += self.horizontal_speed
 
 
