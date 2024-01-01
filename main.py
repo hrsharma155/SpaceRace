@@ -96,6 +96,7 @@ while running:
     #update game logic
     if gamestarted and not gameover:
         sprites.update()
+        helperDistance += 1
 
     #this creates the game over message
     if rocket.check_collision(sprites) and not gameover:
@@ -109,7 +110,7 @@ while running:
         assets.play_audio("death")
 
 
-    helperDistance += 1
+    
     if helperDistance == 100:
         score.value += 1
         helperDistance = 0
