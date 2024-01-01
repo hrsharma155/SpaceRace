@@ -13,7 +13,7 @@ class Rocket(pygame.sprite.Sprite):
         self._layer = Layer.PLAYER
 
         self.images = [
-            assets.get_sprite("rocket-straight"), #rocket when no input
+            assets.get_sprite("rocket-straight"), #rocket image when no input
             assets.get_sprite("rocket-up"), #rocket image when going up
             assets.get_sprite("rocket-down") #rocket image when going down
         ]
@@ -22,7 +22,7 @@ class Rocket(pygame.sprite.Sprite):
 
 
         self.image = self.images[0]
-        self.image = assets.get_sprite("rocket-straight") #midflap
+        self.image = assets.get_sprite("rocket-straight") #rocket image when no input
         self.rect = self.image.get_rect(topleft=(-50,50))
 
         self.mask = pygame.mask.from_surface(self.image)
